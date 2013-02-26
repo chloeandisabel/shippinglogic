@@ -42,8 +42,7 @@ module Shippinglogic
       # label options
       attribute :label_format,                :string,      :default => "GIF"
       attribute :label_file_type,             :string,      :default => "GIF"
-      attribute :reference_number_code,       :string
-      attribute :reference_number_value,      :string
+      attribute :reference_number,            :string
       
       # packaging options
       attribute :packaging_type,              :string,      :default => "00"
@@ -144,10 +143,10 @@ module Shippinglogic
                     b.Weight "%.1f" % package_weight
                   end
 
-                  if reference_number_code && reference_number_value
+                  if reference_number
                     b.ReferenceNumber do
-                      b.Code reference_number_code
-                      b.Value reference_number_value
+                      b.Code '02'
+                      b.Value reference_number
                     end
                   end
                   
